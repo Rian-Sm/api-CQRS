@@ -1,8 +1,8 @@
 using FluentValidation;
 
-namespace POC.SERVICE.API.Commands.Validations
+namespace POC.Domain.Commands.Validations
 {
-    public abstract class ClientValidation : AbstractValidator<ClientCommand>  
+    public abstract class ClientValidation : AbstractValidator<ClientCommand>
     {
         protected void ValidateEmail(){
             RuleFor(c => c.Email)
@@ -29,4 +29,6 @@ namespace POC.SERVICE.API.Commands.Validations
                 .NotEqual(String.Empty);
         }
     }
+
+
 }

@@ -5,7 +5,7 @@ using POC.Domain.Encrypt;
 using POC.Domain.Interfaces;
 using POC.Domain.Models;
 
-namespace POC.SERVICE.API.Commands
+namespace POC.Domain.Commands
 {
     public class ClientCommandHandler : CommandHandler
     ,IRequestHandler<RegisterNewClientCommand, ValidationResult>

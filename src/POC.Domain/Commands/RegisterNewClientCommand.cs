@@ -1,6 +1,6 @@
-using POC.SERVICE.API.Commands.Validations;
+using POC.Domain.Commands.Validations;
 
-namespace POC.SERVICE.API.Commands
+namespace POC.Domain.Commands
 {
     public class RegisterNewClientCommand : ClientCommand
     {

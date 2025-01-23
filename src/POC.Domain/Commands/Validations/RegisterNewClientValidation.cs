@@ -1,4 +1,4 @@
-namespace POC.SERVICE.API.Commands.Validations
+namespace POC.Domain.Commands.Validations
 {
     public class RegisterNewClientValidation : ClientValidation
     {

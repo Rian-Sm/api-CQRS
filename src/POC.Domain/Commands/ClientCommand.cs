@@ -1,6 +1,6 @@
 using NetDevPack.Messaging;
 
-namespace POC.SERVICE.API.Commands
+namespace POC.Domain.Commands
 {
     public abstract class ClientCommand : Command
     {

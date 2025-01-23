@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace POC.SERVICE.API.ViewModel
+
+namespace POC.Domain.ViewModel
 {
     public class ClientViewModel
     {
@@ -24,9 +21,12 @@ namespace POC.SERVICE.API.ViewModel
         public string Email { get; set; }
 
         [Required(ErrorMessage = "The Password is Required")]
-        [MinLength(2)]
+        [MinLength(8)]
         [MaxLength(100)]
         [DisplayName("Password")]
         public string Password { get; set; }
+
+        public string AccessToken { get; set; }
+
     }
 }
