@@ -1,0 +1,14 @@
+﻿services:
+  db:
+    image: postgres:15
+    container_name: poc-client
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: client
+    ports:
+      - "5433:5434"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:

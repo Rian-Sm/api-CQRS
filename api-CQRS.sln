@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.SERVICE.API", "src\POC.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.Domain", "src\POC.Domain\POC.Domain.csproj", "{20733287-757E-4B4C-B3F2-D21A841D5B51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.Infra.Data", "src\POC.Infra.Data\POC.Infra.Data.csproj", "{862D16D6-B332-45BD-848B-38A52343CB5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{20733287-757E-4B4C-B3F2-D21A841D5B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20733287-757E-4B4C-B3F2-D21A841D5B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20733287-757E-4B4C-B3F2-D21A841D5B51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{862D16D6-B332-45BD-848B-38A52343CB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{862D16D6-B332-45BD-848B-38A52343CB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{862D16D6-B332-45BD-848B-38A52343CB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{862D16D6-B332-45BD-848B-38A52343CB5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -29,6 +35,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0731D92A-9D43-9922-8C76-6DF458002A7D} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{20733287-757E-4B4C-B3F2-D21A841D5B51} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{862D16D6-B332-45BD-848B-38A52343CB5C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD87F806-0A3D-4133-AA4A-3F680B22285C}
