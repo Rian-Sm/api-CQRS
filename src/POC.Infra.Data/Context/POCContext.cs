@@ -16,7 +16,7 @@ namespace POC.Infra.Data.Context
             _mediatorHandler = madiatorHandler;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
-        }    
+        }   
 
         public DbSet<Client> Clients{ get; set; }
 

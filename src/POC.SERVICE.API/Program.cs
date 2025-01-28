@@ -1,6 +1,13 @@
+using POC.SERVICE.API.Configurations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.AddApiConfiguration()
+        .AddApiConfiguration()
+        .AddAutoMapperConfiguration()
+        .AddDatabaseConfiguration()
+        .AddMediatRConfiguration();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

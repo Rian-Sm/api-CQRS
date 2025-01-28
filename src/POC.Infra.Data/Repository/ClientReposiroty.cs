@@ -22,13 +22,13 @@ namespace POC.Infra.Data.Repository
             return await DbSet.ToListAsync();
         }
 
-        public async Task<Client> GetByEmail(string email)
+        public async Task<Client?> GetByEmail(string email)
         {
             return await DbSet.AsNoTracking().FirstOrDefaultAsync(c => c.Email == email);
 
         }
 
-        public async Task<Client> GetById(Guid id)
+        public async Task<Client?> GetById(Guid id)
         {
             return await DbSet.FindAsync(id);
         }
