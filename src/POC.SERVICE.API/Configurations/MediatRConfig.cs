@@ -8,8 +8,8 @@ namespace POC.SERVICE.API.Configurations
             
             if (builder == null) throw new ArgumentNullException(nameof(builder));
 
-            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())); 
-
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            
             return builder;
         }
     }

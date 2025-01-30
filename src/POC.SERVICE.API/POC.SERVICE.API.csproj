@@ -21,17 +21,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="NetDevPack" Version="6.1.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.0-preview1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../POC.Domain/POC.Domain.csproj" />
     <ProjectReference Include="../POC.Infra.Data/POC.Infra.Data.csproj" />
+    <ProjectReference Include="..\POC.Infra.CrossCutting.Bus\POC.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\POC.Infra.CrossCutting.IoC\POC.Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <BaseOutputPath>../POC.SERVICE.API/bin/</BaseOutputPath>
-  </PropertyGroup>
 
 </Project>
