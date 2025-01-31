@@ -1,4 +1,5 @@
 using AutoMapper;
+using POC.Domain.Commands;
 using POC.Domain.Models;
 using POC.Domain.ViewModel;
 
@@ -10,6 +11,8 @@ namespace POC.SERVICE.API.Profiles
             CreateMap<Client, ClientViewModel>();
 
             CreateMap<ClientViewModel, Client>();
+
+            CreateMap<ClientViewModel, RegisterNewClientCommand>();
         }
     }
 }
