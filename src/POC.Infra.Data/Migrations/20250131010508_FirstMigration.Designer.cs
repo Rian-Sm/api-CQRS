@@ -12,7 +12,7 @@ using POC.Infra.Data.Context;
 namespace POC.Infra.Data.Migrations
 {
     [DbContext(typeof(POCContext))]
-    [Migration("20250130025012_FirstMigration")]
+    [Migration("20250131010508_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />

@@ -5,10 +5,10 @@
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: client
+      POSTGRES_DB: poc
     ports:
-      - "5433:5434"
+      - "5432:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/poc/data
 volumes:
   db_data:
