@@ -9,11 +9,11 @@ namespace POC.Domain.ViewModel
         [Key]
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage = "The Name is Required")]
-        [MinLength(2)]
-        [MaxLength(100)]
-        [DisplayName("Name")]
-        public string Name { get; set; }
+        // [Required(ErrorMessage = "The Name is Required")]
+        // [MinLength(2)]
+        // [MaxLength(100)]
+        // [DisplayName("Name")]
+        // public string Name { get; set; }
 
         [Required(ErrorMessage = "The E-mail is Required")]
         [EmailAddress]

@@ -45,14 +45,17 @@ namespace POC.SERVICE.API.Services
             return await _mediator.SendCommand(registerCommand);
         }
 
-        public Task<ValidationResult> Remove(Guid id)
+        public async Task<ValidationResult> Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var deleteCommand = new  DeleteClientCommand(id);
+            return await _mediator.SendCommand(deleteCommand);
         }
 
-        public Task<ValidationResult> Update(ClientViewModel clientViewModel)
+        public async Task<ValidationResult> Update(ClientViewModel clientViewModel)
         {
-            throw new NotImplementedException();
+            var  updateCommand = _mapper.Map<UpdateClientCommand>(clientViewModel);
+
+            return await _mediator.SendCommand(updateCommand);
         }
 
         public void Dispose()

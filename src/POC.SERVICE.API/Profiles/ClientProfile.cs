@@ -13,6 +13,9 @@ namespace POC.SERVICE.API.Profiles
             CreateMap<ClientViewModel, Client>();
 
             CreateMap<ClientViewModel, RegisterNewClientCommand>();
+
+            CreateMap<ClientViewModel, UpdateClientCommand>();
+
         }
     }
 }

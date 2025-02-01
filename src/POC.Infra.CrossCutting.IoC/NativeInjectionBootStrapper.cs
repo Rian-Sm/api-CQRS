@@ -27,8 +27,8 @@ namespace POC.Infra.CrossCutting.IoC
 
             // Domain - Commands
             builder.Services.AddScoped<IRequestHandler<RegisterNewClientCommand, ValidationResult>, ClientCommandHandler>();
-            //builder.Services.AddScoped<IRequestHandler<UpdateClientCommand, ValidationResult>, ClientCommandHandler>();
-            //builder.Services.AddScoped<IRequestHandler<RemoveClientCommand, ValidationResult>, ClientCommandHandler>();
+            builder.Services.AddScoped<IRequestHandler<UpdateClientCommand, ValidationResult>, ClientCommandHandler>();
+            builder.Services.AddScoped<IRequestHandler<DeleteClientCommand, ValidationResult>, ClientCommandHandler>();
 
             // Infra - Data
             builder.Services.AddScoped<IClientRepository, ClientReposiroty>();

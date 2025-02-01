@@ -9,6 +9,8 @@ namespace POC.Domain.Commands
 {
     public class ClientCommandHandler : CommandHandler
     ,IRequestHandler<RegisterNewClientCommand, ValidationResult>
+    ,IRequestHandler<UpdateClientCommand, ValidationResult>
+    ,IRequestHandler<DeleteClientCommand, ValidationResult>
     {
         private readonly IClientRepository _clientRepository;
 
@@ -29,13 +31,52 @@ namespace POC.Domain.Commands
 
             if (await _clientRepository.GetByEmail(client.Email) != null)
             {
-                AddError("The customer e-mail has already been taken.");
+                AddError("The client e-mail has already been taken.");
                 return ValidationResult;
             }
 
             _clientRepository.Add(client);
 
             return await Commit(_clientRepository.UnitOfWork);
+        }
+
+        public async Task<ValidationResult> Handle(UpdateClientCommand message, CancellationToken cancellationToken)
+        {
+            if (!message.IsValid()) return message.ValidationResult;
+
+            Client? client = await _clientRepository.GetById(message.Id);
+
+            if (client == null)
+            {
+                AddError("The client ID not exist");
+                return ValidationResult;
+            }
+
+            client.Email = message.Email;
+            client.Password = PasswordHasher.HashPassword(message.Password);
+
+            _clientRepository.Update(client);
+
+
+            return await Commit(_clientRepository.UnitOfWork);
+
+        }
+
+        public async Task<ValidationResult> Handle(DeleteClientCommand message, CancellationToken cancellationToken)
+        {
+            if (!message.IsValid()) return message.ValidationResult;
+
+            Client? client = await _clientRepository.GetById(message.Id);
+
+            if (client == null)
+            {
+                AddError("The client ID not exist");
+                return ValidationResult;
+            }
+
+            _clientRepository.Remove(client);
+
+            return await Commit(_clientRepository.UnitOfWork);   
         }
     }
 }
