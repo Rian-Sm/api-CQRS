@@ -1,9 +1,12 @@
 using AutoMapper;
 using FluentValidation.Results;
+using MediatR;
+using Microsoft.VisualBasic;
 using NetDevPack.Mediator;
 using POC.Domain.Commands;
 using POC.Domain.Interfaces;
 using POC.Domain.Models;
+using POC.Domain.Queries.Client;
 using POC.Domain.ViewModel;
 using POC.SERVICE.API.Interfaces;
 
@@ -23,9 +26,10 @@ namespace POC.SERVICE.API.Services
         
         //private readonly IEventStoreRepository _eventStoreRepository;
 
-        public async Task<IEnumerable<ClientViewModel>> GetAll()
+        public async Task<IEnumerable<ClientListViewModel>> GetAll()
         {
-            return _mapper.Map<IEnumerable<ClientViewModel>>(await _clientRepository.GetAll());
+            var getQuery = new GetClientQuery();
+            return null;
         }
 
         public async Task<ClientViewModel> GetByEmail(string email)

@@ -9,6 +9,8 @@ namespace POC.SERVICE.API.Profiles
     {
         public ClientProfile(){
             CreateMap<Client, ClientViewModel>();
+            
+            CreateMap<Client, ClientListViewModel>();
 
             CreateMap<ClientViewModel, Client>();
 

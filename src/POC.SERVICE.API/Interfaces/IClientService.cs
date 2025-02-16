@@ -9,7 +9,7 @@ namespace POC.SERVICE.API.Interfaces
         Task<ClientViewModel> GetById(Guid id);
         Task<ClientViewModel> GetByEmail(string email);
 
-        Task<IEnumerable<ClientViewModel>> GetAll();
+        Task<IEnumerable<ClientListViewModel>> GetAll();
         
         Task<ValidationResult> Register(ClientViewModel clientViewModel);
         Task<ValidationResult> Update(ClientViewModel clientViewModel);

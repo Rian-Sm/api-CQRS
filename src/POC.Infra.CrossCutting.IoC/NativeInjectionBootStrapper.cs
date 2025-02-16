@@ -10,6 +10,8 @@ using POC.Infra.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using POC.Infra.Data.EventSourcing;
+using POC.Domain.Queries.Client;
+using POC.Domain.ViewModel;
 
 namespace POC.Infra.CrossCutting.IoC
 {
@@ -29,6 +31,9 @@ namespace POC.Infra.CrossCutting.IoC
             builder.Services.AddScoped<IRequestHandler<RegisterNewClientCommand, ValidationResult>, ClientCommandHandler>();
             builder.Services.AddScoped<IRequestHandler<UpdateClientCommand, ValidationResult>, ClientCommandHandler>();
             builder.Services.AddScoped<IRequestHandler<DeleteClientCommand, ValidationResult>, ClientCommandHandler>();
+
+            // Domain - Querys
+            builder.Services.AddScoped<IRequestHandler<GetClientQuery, IEnumerable<ClientListViewModel>>,  ClientQueryHandler>();
 
             // Infra - Data
             builder.Services.AddScoped<IClientRepository, ClientReposiroty>();
