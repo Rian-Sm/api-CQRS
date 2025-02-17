@@ -2,6 +2,7 @@
 using POC.SERVICE.API.Configurations;
 using POC.SERVICE.API.Interfaces;
 using POC.SERVICE.API.Services;
+using System.Runtime.Caching;
 
 var builder = WebApplication.CreateBuilder(args);
 
