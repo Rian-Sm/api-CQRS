@@ -1,9 +1,10 @@
 using NetDevPack.Data;
 using POC.Domain.Models;
+using POC.Infra.CrossCutting.Cache.Interfaces;
 
 namespace POC.Domain.Interfaces
 {
-    public interface IClientRepository : IRepository<Client>
+    public interface IClientRepository : IRepository<Client> ,ICachedRepository
     {
         Task<Client?> GetById(Guid id);
         Task<Client?> GetByEmail(string email);

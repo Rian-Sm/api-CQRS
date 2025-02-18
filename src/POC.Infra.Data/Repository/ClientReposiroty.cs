@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NetDevPack.Data;
 using POC.Domain.Interfaces;
 using POC.Domain.Models;
+using POC.Infra.CrossCutting.Cache.Interfaces;
 using POC.Infra.Data.Context;
 
 namespace POC.Infra.Data.Repository
@@ -16,6 +17,8 @@ namespace POC.Infra.Data.Repository
             DbSet = Db.Set<Client>();
         }
         public IUnitOfWork UnitOfWork => Db;
+
+        public ICached Cache => Db;
 
         public async Task<IEnumerable<Client>> GetAll()
         {

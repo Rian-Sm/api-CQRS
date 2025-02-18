@@ -29,10 +29,10 @@ namespace POC.SERVICE.API.Services
         
         //private readonly IEventStoreRepository _eventStoreRepository;
 
-        public async Task<IEnumerable<ClientListViewModel>> GetAll()
+        public async Task<IEnumerable<Client>> GetAll()
         {
             var getQuery = new GetClientQuery();
-            return (IEnumerable<ClientListViewModel>) _cache.SendQuery(getQuery);
+            return (IEnumerable<Client>)  await _cache.SendQuery(getQuery);
         }
 
         public async Task<ClientViewModel> GetByEmail(string email)

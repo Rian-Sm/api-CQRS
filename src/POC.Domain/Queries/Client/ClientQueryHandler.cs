@@ -1,11 +1,11 @@
 
 using MediatR;
 using POC.Domain.Interfaces;
-using POC.Domain.ViewModel;
+using POC.Domain.Models;
 
 namespace POC.Domain.Queries.Client
 {
-    public class ClientQueryHandler : IRequestHandler<GetClientQuery, IEnumerable<ClientListViewModel>>
+    public class ClientQueryHandler : IRequestHandler<GetClientQuery, IEnumerable<Models.Client>>
     {
         private readonly IClientRepository _clientRepository;
 
@@ -15,9 +15,20 @@ namespace POC.Domain.Queries.Client
          }
 
 
-        public async Task<IEnumerable<ClientListViewModel>> Handle(GetClientQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Models.Client>> Handle(GetClientQuery request, CancellationToken cancellationToken)
         {
-            return (IEnumerable<ClientListViewModel>)_clientRepository.GetAll();
+            IEnumerable<Models.Client> clientList =  _clientRepository.Cache.GetCache<IEnumerable<Models.Client>>(typeof(GetClientQuery).ToString());
+
+            if (clientList == null){
+                var Items =  await _clientRepository.GetAll();
+
+               return _clientRepository.Cache.SetCache(
+                    typeof(GetClientQuery).ToString(),
+                    Items
+                    );
+            }
+
+            return clientList;
         }
     }
 

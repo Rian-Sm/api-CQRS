@@ -1,47 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Caching;
-using System.Runtime.Caching.Hosting;
-using System.Threading.Tasks;
 using MediatR;
 using POC.Infra.CrossCutting.Cache.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
+using POC.Infra.CrossCutting.Cache.Models;
 
 namespace POC.Infra.CrossCutting.Cache
 {
     public class InMemoryCache : ICacheHandler
     {
-         private readonly IMediator _mediator;
-         private readonly ObjectCache _cache = MemoryCache.Default;
-        private readonly CacheItemPolicy _policy;
+        private readonly IMediator _mediator;
+        private readonly IMemoryCache _cache;
 
-         public InMemoryCache(IMediator mediator){
-             _mediator = mediator;
+        public InMemoryCache(IMediator mediator, IMemoryCache cache){
+            _mediator = mediator;
+            _cache = cache;
+        }
+
+        public async Task<Object> SendQuery<T>(T Query) 
+        {
+            return await _mediator.Send(Query);
+        }
+
+        public T SetValue<T>(string key, T Value)
+        {
+            MemoryCacheEntryOptions cacheOptions = new MemoryCacheEntryOptions()
+                .SetSlidingExpiration(TimeSpan.FromHours(2))
+                .SetAbsoluteExpiration(TimeSpan.FromDays(2))
+                .SetPriority(CacheItemPriority.Normal);
             
-            _policy = new CacheItemPolicy
-            {
-                AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(10) // Expira em 10 minutos
-            };
-         }
-
-         public async Task<Object> SendQuery<T>(T Query) 
-         {
-             return await _mediator.Send(Query);
-         }
-
-         public void AddToCache(string key, object value)
-        {
-            _cache.Add(key, value, _policy);
+            
+            return _cache.Set(key, Value, cacheOptions);
         }
 
-        public object GetFromCache(string key)
+        public bool GetValue<T>(string key, out T item)
         {
-            return _cache.Get(key);
+            bool sucess = _cache.TryGetValue<T>(key, out item);
+
+            return sucess;
         }
 
-        public void RemoveFromCache(string key)
-        {
-            _cache.Remove(key);
-        }
+       
     }
 }
