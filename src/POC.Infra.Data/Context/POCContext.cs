@@ -5,15 +5,19 @@ using NetDevPack.Domain;
 using NetDevPack.Mediator;
 using NetDevPack.Messaging;
 using POC.Domain.Models;
+using POC.Infra.CrossCutting.Cache.Interfaces;
+using POC.Infra.CrossCutting.Cache.Models;
 
 namespace POC.Infra.Data.Context
 {
-    public class POCContext : DbContext, IUnitOfWork
+    public class POCContext : DbContext, IUnitOfWork, ICached
     {
         private readonly IMediatorHandler _mediatorHandler;
+        private readonly ICacheHandler _cache;
 
-        public POCContext(DbContextOptions<POCContext> options, IMediatorHandler madiatorHandler): base (options){
+        public POCContext(DbContextOptions<POCContext> options, IMediatorHandler madiatorHandler, ICacheHandler cache): base (options){
             _mediatorHandler = madiatorHandler;
+            _cache = cache;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
         }   
@@ -34,6 +38,20 @@ namespace POC.Infra.Data.Context
             var sucess = await SaveChangesAsync() > 0;
 
             return sucess;
+        }
+
+        public T GetCache<T>(string key)
+        {
+            Object item;
+
+            _cache.GetValue(key, out item);
+
+            return (T) item;
+        }
+
+        public T SetCache<T>(string key, T cacheItem)
+        {
+            return _cache.SetValue(key, cacheItem);
         }
     }
 
