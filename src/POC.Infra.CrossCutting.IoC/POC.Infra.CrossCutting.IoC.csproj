@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\POC.Domain\POC.Domain.csproj" />
     <ProjectReference Include="..\POC.Infra.CrossCutting.Bus\POC.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\POC.Infra.CrossCutting.Bus\POC.Infra.CrossCutting.Cache.csproj" />
     <ProjectReference Include="..\POC.Infra.Data\POC.Infra.Data.csproj" />
   </ItemGroup>
 

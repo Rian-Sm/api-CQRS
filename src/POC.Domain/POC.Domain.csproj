@@ -15,4 +15,8 @@
     <PackageReference Include="NetDevPack" Version="6.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../POC.Infra.CrossCutting.Cache/POC.Infra.CrossCutting.Cache.csproj" />
+  </ItemGroup>
+
 </Project>

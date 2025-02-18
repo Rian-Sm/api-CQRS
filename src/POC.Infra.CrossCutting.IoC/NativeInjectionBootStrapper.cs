@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using POC.Infra.Data.EventSourcing;
 using POC.Domain.Queries.Client;
 using POC.Domain.ViewModel;
+using POC.Infra.CrossCutting.Cache.Interfaces;
+using POC.Infra.CrossCutting.Cache;
 
 namespace POC.Infra.CrossCutting.IoC
 {
@@ -21,6 +23,7 @@ namespace POC.Infra.CrossCutting.IoC
 
             //Mediator Handler
             builder.Services.AddScoped<IMediatorHandler, InMemoryBus>();
+            builder.Services.AddScoped<ICacheHandler, InMemoryCache>();
 
             // Domain - Events
             builder.Services.AddScoped<INotificationHandler<ClientRegisteredEvent>, ClientEventHandler>();
