@@ -1,6 +1,5 @@
 
 using FluentValidation.Results;
-using POC.Domain.Models;
 using POC.Domain.ViewModel;
 
 namespace POC.SERVICE.API.Interfaces
@@ -10,7 +9,7 @@ namespace POC.SERVICE.API.Interfaces
         Task<ClientViewModel> GetById(Guid id);
         Task<ClientViewModel> GetByEmail(string email);
 
-        Task<IEnumerable<Client>> GetAll();
+        Task<IEnumerable<ClientListViewModel>> GetAll();
         
         Task<ValidationResult> Register(ClientViewModel clientViewModel);
         Task<ValidationResult> Update(ClientViewModel clientViewModel);

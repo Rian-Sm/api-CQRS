@@ -15,9 +15,9 @@ namespace POC.Infra.CrossCutting.Cache
             _cache = cache;
         }
 
-        public async Task<Object> SendQuery<T>(T Query) 
+        public async Task<T> SendQuery<T>(IRequest<T> query) 
         {
-            return await _mediator.Send(Query);
+            return await _mediator.Send(query);
         }
 
         public T SetValue<T>(string key, T Value)
